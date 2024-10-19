@@ -12,7 +12,7 @@ pipeline {
     stages {
     stage('1. Git Checkout') {
       steps {
-        git branch: 'Master', credentialsId: 'github-jenkins-auth', url: 'https://github.com/dbesong/addressbook'
+        git branch: 'release', credentialsId: 'github-jenkins-auth', url: 'https://github.com/dbesong/addressbook'
       }
     }
     //Github-pat
