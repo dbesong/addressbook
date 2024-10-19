@@ -1,5 +1,5 @@
 pipeline {
-    agent { node { label "maven-sonarqube-node" } }   
+    agent { node { label "Sonarqube_Instance" } }   
     parameters {
       choice(name: 'Environment', choices: ['Dev', 'QA', 'UAT', 'Prod'], description: 'Target environment for deployment')
       string(name: 'ecr_tag', defaultValue: '1.0.0', description: 'Assign the ECR tag version for the build')
@@ -12,7 +12,7 @@ pipeline {
     stages {
     stage('1. Git Checkout') {
       steps {
-        git branch: 'release', credentialsId: 'Github-pat', url: 'https://github.com/ndiforfusi/addressbook.git'
+        git branch: 'Master', credentialsId: 'Github-pat', url: 'https://github.com/dbesong/addressbook'
       }
     }
     stage('2. Build with Maven') { 
