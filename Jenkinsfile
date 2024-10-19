@@ -21,24 +21,24 @@ pipeline {
         sh "mvn clean package"
       }
     }
-    stage('3. SonarQube Analysis') {
-          environment {
-                scannerHome = tool 'SonarQube-Scanner-6.2.1'
-            }
-            steps {
-              withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
-                      sh """
-                      ${scannerHome}/bin/sonar-scanner  
-                      -Dsonar.projectKey=addressbook                   
-                      -Dsonar.projectName='addressbook'                             
-                      -Dsonar.host.url=http://184.72.109.208:9000                    
-                      -Dsonar.token=${SONAR_TOKEN} 
-                      -Dsonar.sources=src/main/java/ 
-                      -Dsonar.java.binaries=target/classes 
-                     """
-                  }
-              }
-        }
+    //stage('3. SonarQube Analysis') {
+        //  environment {
+          //      scannerHome = tool 'SonarQube-Scanner-6.2.1'
+          //  }
+         //   steps {
+          //    withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+            //          sh """
+            //          ${scannerHome}/bin/sonar-scanner  
+            //          -Dsonar.projectKey=addressbook                   
+            //          -Dsonar.projectName='addressbook'                             
+             //         -Dsonar.host.url=http://184.72.109.208:9000                    
+             //         -Dsonar.token=${SONAR_TOKEN} 
+              //        -Dsonar.sources=src/main/java/ 
+               //       -Dsonar.java.binaries=target/classes 
+             //        """
+            //      }
+           //   }
+       // }
 
 //addressbook-application \
 //'addressbook-application' \
