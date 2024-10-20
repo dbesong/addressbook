@@ -31,7 +31,7 @@ pipeline {
             //          ${scannerHome}/bin/sonar-scanner  
             //          -Dsonar.projectKey=addressbook                   
             //          -Dsonar.projectName='addressbook'                             
-             //         -Dsonar.host.url=http://184.72.109.208:9000                    
+             //         -Dsonar.host.url=http://44.210.143.67:9000                    
              //         -Dsonar.token=${SONAR_TOKEN} 
               //        -Dsonar.sources=src/main/java/ 
                //       -Dsonar.java.binaries=target/classes 
@@ -62,8 +62,8 @@ pipeline {
       steps {
         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 654654439077.dkr.ecr.us-east-1.amazonaws.com"
         sh "sudo docker build -t addressbook ."
-        sh "sudo docker tag addressbook:latest 654654439077.dkr.ecr.us-east-1.amazonaws.com/addressbook:latest:${params.ecr_tag}"
-        sh "sudo docker push 654654439077.dkr.ecr.us-east-1.amazonaws.com/addressbook:latest:${params.ecr_tag}"
+        sh "sudo docker tag addressbook:latest 654654439077.dkr.ecr.us-east-1.amazonaws.com/addressbook:${params.ecr_tag}"
+        sh "sudo docker push 654654439077.dkr.ecr.us-east-1.amazonaws.com/addressbook:${params.ecr_tag}"
       }
     }
 
